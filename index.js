@@ -20,22 +20,20 @@ btn.addEventListener('click', getRandomPass);
 
 
 
-function getRandomPass() {
+function displayPasswords(whatisitmadeof){
     firstPass.textContent = "";
     seccondPass.textContent = "";
     let passwordSize = document.querySelector("#pass-size").value;
     
-    function displayPasswords(whatisitmadeof){
-        
-        for (let i = 0; i < passwordSize; i++){
-            let randomIndex1 = Math.floor(Math.random() * whatisitmadeof.length)
-            let randomIndex2 = Math.floor(Math.random() * whatisitmadeof.length)
-            firstPass.textContent += whatisitmadeof[randomIndex1];
-            seccondPass.textContent += whatisitmadeof[randomIndex2];
-        }
+    for (let i = 0; i < passwordSize; i++){
+        let randomIndex1 = Math.floor(Math.random() * whatisitmadeof.length)
+        let randomIndex2 = Math.floor(Math.random() * whatisitmadeof.length)
+        firstPass.textContent += whatisitmadeof[randomIndex1];
+        seccondPass.textContent += whatisitmadeof[randomIndex2];
     }
+}
 
-    
+function getRandomPass() {
     if (!checkNum.checked && !checkSimb.checked){
         displayPasswords(onlyLetters)
     } else if (checkNum.checked && !checkSimb.checked) {
