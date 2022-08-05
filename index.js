@@ -25,47 +25,25 @@ function getRandomPass() {
     seccondPass.textContent = "";
     let passwordSize = document.querySelector("#pass-size").value;
     
-    if (checkNum.checked == false && checkSimb.checked == false){
+    function displayPasswords(whatisitmadeof){
+        
         for (let i = 0; i < passwordSize; i++){
-            let randomIndex1 = Math.floor(Math.random() * onlyLetters.length)
-            firstPass.textContent += onlyLetters[randomIndex1];
+            let randomIndex1 = Math.floor(Math.random() * whatisitmadeof.length)
+            let randomIndex2 = Math.floor(Math.random() * whatisitmadeof.length)
+            firstPass.textContent += whatisitmadeof[randomIndex1];
+            seccondPass.textContent += whatisitmadeof[randomIndex2];
         }
-    
-        for (let j = 0; j < passwordSize; j++){
-            let randomIndex2 = Math.floor(Math.random() * onlyLetters.length)
-            seccondPass.textContent += onlyLetters[randomIndex2];
-        }
+    }
 
-    } else if (checkNum.checked == true && checkSimb.checked == false) {
-        for (let i = 0; i < passwordSize; i++){
-            let randomIndex1 = Math.floor(Math.random() * onlyNumbers.length)
-            firstPass.textContent += onlyNumbers[randomIndex1];
-        }
     
-        for (let j = 0; j < passwordSize; j++){
-            let randomIndex2 = Math.floor(Math.random() * onlyNumbers.length)
-            seccondPass.textContent += onlyNumbers[randomIndex2];
-        }
-    } else if (checkNum.checked == false && checkSimb.checked == true) {
-        for (let i = 0; i < passwordSize; i++){
-            let randomIndex1 = Math.floor(Math.random() * onlySimbols.length)
-            firstPass.textContent += onlySimbols[randomIndex1];
-        }
-    
-        for (let j = 0; j < passwordSize; j++){
-            let randomIndex2 = Math.floor(Math.random() * onlySimbols.length)
-            seccondPass.textContent += onlySimbols[randomIndex2];
-        }
+    if (!checkNum.checked && !checkSimb.checked){
+        displayPasswords(onlyLetters)
+    } else if (checkNum.checked && !checkSimb.checked) {
+        displayPasswords(onlyNumbers)
+    } else if (!checkNum.checked && checkSimb.checked) {
+        displayPasswords(onlySimbols);
     } else {
-        for (let i = 0; i < passwordSize; i++){
-            let randomIndex1 = Math.floor(Math.random() * characters.length)
-            firstPass.textContent += characters[randomIndex1];
-        }
-    
-        for (let j = 0; j < 15; j++){
-            let randomIndex2 = Math.floor(Math.random() * characters.length)
-            seccondPass.textContent += characters[randomIndex2];
-        }
+        displayPasswords(characters);
     }
     console.log(passwordSize);
 };
